@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -18,12 +19,32 @@ import com.example.nectartorres.R
 @Composable
 fun FullScreenFailureDialog(navController: NavController) {
     // Fondo oscuro semitransparente que deja ver el contenido detrás (el carrito)
+
+
+
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black.copy(alpha = 0.5f)),  // Fondo oscuro que permite ver la pantalla debajo
         contentAlignment = Alignment.Center
     ) {
+
+
+        Image(
+            painter = painterResource(id = R.drawable.fondo_dialogs),
+            contentDescription = null, // No es necesario un contentDescription ya que es decorativa
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop // Escala la imagen para llenar la pantalla
+        )
+
+        // Capa oscura semitransparente sobre la imagen
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black.copy(alpha = 0.6f)) // Capa de oscuridad
+        )
+
         // La tarjeta con el mensaje de fallo
         Card(
             shape = RoundedCornerShape(16.dp),  // Esquinas redondeadas

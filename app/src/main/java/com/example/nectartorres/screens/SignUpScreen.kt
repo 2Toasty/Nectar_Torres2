@@ -17,6 +17,7 @@ import com.example.nectartorres.viewmodels.AuthViewModel
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
+import com.example.nectartorres.ui.components.DialogTip
 
 
 @Composable
@@ -26,6 +27,11 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel) {
     var password by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
     var signUpError by remember { mutableStateOf("") }
+
+
+    // Estado para mostrar/ocultar el ToolTip
+    var showDialog by remember { mutableStateOf(false) }
+
 
     Column(
         modifier = Modifier
@@ -159,7 +165,11 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel) {
 
         // Botón verde rectangular con puntas redondeadas
         Button(
-            onClick = {            },
+            onClick = {
+
+                showDialog = true  // Activar el tooltip cuando se hace clic en la X
+
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
@@ -175,6 +185,9 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel) {
                 Text(text = "Sign Up", style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onPrimary)
             }
         }
+
+        // Llamar al Dialog para mostrar el mensaje
+        DialogTip(showDialog = showDialog, onDismiss = { showDialog = false })
 
         Spacer(modifier = Modifier.height(16.dp))
 

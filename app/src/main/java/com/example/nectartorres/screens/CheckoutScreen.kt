@@ -29,6 +29,12 @@ import androidx.navigation.NavController
 
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.Image
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.Role.Companion.Image
+import com.example.nectartorres.R
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,32 +50,25 @@ fun CheckoutScreen(
     // Contenedor principal de la pantalla
     Box(modifier = Modifier.fillMaxSize()) {
 
-        // Fondo oscuro transparente que no es clickeable para cerrar el modal
-        if (showModal) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.Black.copy(alpha = 0.6f)) // Fondo oscuro detrás de la tarjeta
-            )
-        }
+        Image(
+            painter = painterResource(id = R.drawable.fondo_checkout),
+            contentDescription = null, // No es necesario un contentDescription ya que es decorativa
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop // Escala la imagen para llenar la pantalla
+        )
 
-        // Animación para la tarjeta de Checkout
-        AnimatedVisibility(
-            visible = showModal,
-            enter = slideInVertically(
-                initialOffsetY = { it }, // Aparece desde la parte inferior de la pantalla
-                animationSpec = tween(500) // Duración de la animación
-            ),
-            exit = slideOutVertically(
-                targetOffsetY = { it }, // Desaparece hacia la parte inferior de la pantalla
-                animationSpec = tween(500)
-            )
-        ) {
-            // Tarjeta del Checkout que ocupa la mitad de la pantalla
+        // Capa oscura semitransparente sobre la imagen
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black.copy(alpha = 0.6f)) // Capa de oscuridad
+        )
+
+        // Tarjeta del Checkout que ocupa la mitad de la pantalla
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .heightIn(min = 250.dp, max = 450.dp) // Ajusta según el contenido
+                    .wrapContentHeight() // Esto permitirá que la tarjeta solo ocupe el espacio necesario para su contenido
                     .align(Alignment.BottomCenter) // Alineado con la parte inferior
                     .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
                     .padding(16.dp)
@@ -145,7 +144,7 @@ fun CheckoutScreen(
                     })
                 }
             }
-        }
+
     }
 }
 

@@ -74,4 +74,6 @@ fun BottomNavigationBar(navController: NavController) {
             )
         }
     }
+
+    // prueba
 }

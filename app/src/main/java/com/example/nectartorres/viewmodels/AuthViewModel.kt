@@ -39,7 +39,7 @@ private val productRepository: ProductRepository  // Inyección de ProductReposi
                 token = response.token
                 onLoginSuccess()
             } catch (e: Exception) {
-                errorMessage = "Error en el login: ${e.message}"
+                errorMessage = "Usuario o contraseña incorrecto/s"
             } finally {
                 isLoading = false
             }

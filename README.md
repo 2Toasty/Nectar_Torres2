@@ -1,9 +1,24 @@
-Detalle del producto
-- Api involucrada
-- Configuración
-- Quien lo desarrolló
-- Breve descripción de lo que hace
-- Versión de Android studio lo que estudio.
+Desarrollador: Facundo Torres
+
+Descripción del Proyecto:
+
+Este es un proyecto académico para el desarrollo de una aplicación de comercio electrónico (e-commerce). La aplicación incluye las siguientes características:
+
+Pantallas de Onboarding y Splash para una experiencia de bienvenida.
+Funcionalidades de inicio de sesión y registro (LogIn/SignUp).
+Página de inicio (HomePage) donde se pueden ver todos los productos y una barra de búsqueda para filtrar productos por categoría o palabra clave.
+Opciones para agregar productos al carrito de compras o a la lista de favoritos. Desde favoritos, los productos se pueden transferir al carrito.
+Checkout que permite seleccionar métodos de pago, ubicación de envío y otros detalles de compra.
+Tecnologías utilizadas:
+
+Lenguaje de programación: Kotlin
+Framework de UI: Jetpack Compose (Material 3)
+Integración de red: Retrofit
+Almacenamiento y autenticación: Firebase (Firebase Auth, Firestore)
+Carga de imágenes: Coil
+Versión de Android Studio: Koala
+
+
 
 
 
